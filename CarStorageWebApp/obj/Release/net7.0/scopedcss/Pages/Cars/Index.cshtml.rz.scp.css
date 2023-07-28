@@ -1,0 +1,23 @@
+.add-vehicle[b-72f601wh74] {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.word-search[b-72f601wh74] {
+    width: 60%;
+    display: inline-block;
+    margin-left: 35px;
+}
+
+.date-select[b-72f601wh74] {
+    width: 25%;
+    display: inline-block;
+}
+
+.filter-btn[b-72f601wh74] {
+    margin-left: 20px;
+}
+
+.table-head[b-72f601wh74] {
+    color: teal;
+}

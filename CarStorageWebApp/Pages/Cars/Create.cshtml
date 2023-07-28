@@ -1,0 +1,56 @@
+﻿@page
+@model CarStorageWebApp.Pages.Cars.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<link rel="stylesheet" href="~/@(nameof(CarStorageWebApp)).styles.css" />
+
+<h1 class="create-header">Create</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-element">
+                <label asp-for="Car.Brand" class="control-label"></label>
+                <input asp-for="Car.Brand" class="form-control" />
+                <span asp-validation-for="Car.Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group form-element">
+                <label asp-for="Car.Model" class="control-label"></label>
+                <input asp-for="Car.Model" class="form-control" />
+                <span asp-validation-for="Car.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group form-element">
+                <label asp-for="Car.Description" class="control-label"></label>
+                <input asp-for="Car.Description" class="form-control" />
+                <span asp-validation-for="Car.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-element">
+                <label asp-for="Car.YearOfManufacturing" class="control-label"></label>
+                <input asp-for="Car.YearOfManufacturing" class="form-control" />
+                <span asp-validation-for="Car.YearOfManufacturing" class="text-danger"></span>
+            </div>
+            <div class="form-group form-element">
+                <label asp-for="Car.Price" class="control-label"></label>
+                <input asp-for="Car.Price" class="form-control" />
+                <span asp-validation-for="Car.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group form-element create-btn">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index" style="text-decoration: none; color: teal;">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

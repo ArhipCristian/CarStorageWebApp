@@ -1,0 +1,84 @@
+﻿@page "{searchString?}"
+@model CarStorageWebApp.Pages.Cars.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/@(nameof(CarStorageWebApp)).styles.css" />
+
+<h1>Inventory</h1>
+
+<p>
+    <button type="button" class="btn btn-primary add-vehicle">
+        <a asp-page="Create" style="color:white; text-decoration:none">Add a New Vehicle</a>
+    </button>    
+</p>
+
+<form>
+    <div>
+        <div class="date-select">
+            Dates:
+            <select asp-for="CarYearOfManufacturing" asp-items="Model.YearsOfManufacturing" class="form-select" style="width:80%; display:inline-block;">
+                <option value="">All</option>
+            </select>
+        </div>
+        <div class="word-search">
+            Brand: 
+            <input type="text" asp-for="SearchString" class="form-control" style="width:60%; display:inline-block" /><input type="submit" class="btn btn-primary filter-btn" value="Filter" />
+        </div>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="table-head">
+                @Html.DisplayNameFor(model => model.Car[0].Brand)
+            </th>
+            <th class="table-head">
+                @Html.DisplayNameFor(model => model.Car[0].Model)
+            </th>
+            <th class="table-head">
+                @Html.DisplayNameFor(model => model.Car[0].Description)
+            </th>
+            <th class="table-head">
+                @Html.DisplayNameFor(model => model.Car[0].YearOfManufacturing)
+            </th>
+            <th class="table-head">
+                @Html.DisplayNameFor(model => model.Car[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Car) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfManufacturing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" style="text-decoration:none">
+                    <img class="icons" style="height:30px" src="~/Images/Icons/editing.png">
+                </a>  
+                    <a asp-page="./Details" asp-route-id="@item.ID" style="text-decoration:none">
+                    <img class="icons" style="height:30px" src="~/Images/Icons/file.png">
+                </a>  
+                <a asp-page="./Delete" asp-route-id="@item.ID" style="text-decoration:none">                        
+                    <img class="icons" style="height:30px" src="~/Images/Icons/delete.png">
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

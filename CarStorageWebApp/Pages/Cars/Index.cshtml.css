@@ -1,0 +1,23 @@
+﻿.add-vehicle {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.word-search {
+    width: 60%;
+    display: inline-block;
+    margin-left: 35px;
+}
+
+.date-select {
+    width: 25%;
+    display: inline-block;
+}
+
+.filter-btn {
+    margin-left: 20px;
+}
+
+.table-head {
+    color: teal;
+}
