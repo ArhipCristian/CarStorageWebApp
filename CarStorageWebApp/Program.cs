@@ -11,8 +11,9 @@ namespace CarStorageWebApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            
             builder.Services.AddDbContext<CarStorageWebAppContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("CarStorageWebAppContext") ?? throw new InvalidOperationException("Connection string 'CarStorageWebAppContext' not found.")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("CarStorageWebAppContext") ?? throw new InvalidOperationException("Connection string 'CarStorageWebAppContext' not found.")));  
 
             // Add services to the container.
             builder.Services.AddRazorPages();
