@@ -10,8 +10,9 @@ namespace CarStorageWebApp
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            var builder = WebApplication.CreateBuilder(args);            
             
+            //Adding the databse context
             builder.Services.AddDbContext<CarStorageWebAppContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("CarStorageWebAppContext") ?? throw new InvalidOperationException("Connection string 'CarStorageWebAppContext' not found.")));  
 
@@ -25,18 +26,19 @@ namespace CarStorageWebApp
             {
                 var services = scope.ServiceProvider;
 
+                //Seeding the database with initial data
                 SeedData.Initialize(services);
             }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseExceptionHandler("/Error");                
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
